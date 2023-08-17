@@ -1,0 +1,38 @@
+/* sidebar scroll */
+
+.scroll-view-two{
+  overflow-y: scroll;
+  height: 90vh;
+
+}
+
+  .scrollbar-secondary-two::-webkit-scrollbar-track {
+    box-shadow: transparent;
+    border:none; 
+  }
+    
+    .scrollbar-secondary-two::-webkit-scrollbar {
+    width: 5px;
+  }
+    
+    .scrollbar-secondary-two::-webkit-scrollbar-thumb {
+    border: none;
+    box-shadow:transparent;
+    background-color: #d0d2d6;
+  }
+
+
+/* login and register input fields */
+.formStyle {
+  flex-direction: "row";
+  display: "flex";
+  align-items: "center";
+}
+
+.placeHolderStyle {
+  flex: 1;
+  border: 0;
+  outline: none;
+}
+
+
