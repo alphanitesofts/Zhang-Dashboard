@@ -1,3 +1,10 @@
+:root {
+  --pretty-modal-modal-container-background-color: #272C32;
+  --pretty-modal-modal-container-border-radius: 10px;
+  --pretty-modal-modal-container-box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+}
+
+
 /* sidebar scroll */
 
 .scroll-view-two{
@@ -33,6 +40,34 @@
   flex: 1;
   border: 0;
   outline: none;
+  color: #d0d2d6;
+  background-color: #343A40;
 }
+
+/* loader */
+
+/* loader */
+
+.loader {
+  position: absolute;
+  /* top: 50%; */
+  margin-top: 300px;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-left: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+  .loader {
+    position: absolute;
+    margin-left: 0px;
+    /* top: 50%; */
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
 
 

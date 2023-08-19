@@ -14,6 +14,7 @@ import ForgotPassword from "./Components/Auth/ForgotPassword";
 
 import AllUsers from "./Components/Users/AllUsers";
 import Homepage from "./Components/Main/Homepage";
+import AllCategories from "./Components/Categories/AllCategories";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -49,8 +50,9 @@ function App() {
           <Navbar />
           <Sidebar />
           <Routes>
-            <Route path='/' element={<Homepage/>} />
+            <Route path="/" element={<Homepage />} />
             <Route path="/AllUsers" element={<AllUsers />} />
+            <Route path="/AllCategories" element={<AllCategories />} />
           </Routes>
           <Footer />
         </Router>

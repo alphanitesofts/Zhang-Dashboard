@@ -4,92 +4,86 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import baseUrl from '../sourceFiles/Baseurl';
 
-import { Modal } from 'pretty-modal'
+const EditCategory = () => {
 
-const AddUser = ({ users, closeModal, shouldShow }) => {
-
-  const [emailvalidate, setEmailValidate] = useState(false)
-
-  const [username, setUserName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [question, setQuestion] = useState("Select Security Question")
-  const [answer, setAnswer] = useState('')
-
-  const [loader, setLoader] = useState(false)
-  const [fieldStatus, setFieldStatus] = useState(false)
-
-  const registerAdmin = () => {
-    setFieldStatus(true)
-    if (
-      username === "" ||
-      question === "Select Security Question" ||
-      answer === "" ||
-      password === "" ||
-      confirmPassword === "" ||
-      phone === ""
-    ) {
-      toast.warn("Please fill all fields");
-    } else {
-      if (password.length < 6) {
-        toast.warn("Password should be atleast 6 characters");
-      } else if (confirmPassword !== password) {
-        toast.warn("Password should match");
+    const [username, setUserName] = useState("")
+    const [phone, setPhone] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [question, setQuestion] = useState("Select Security Question")
+    const [answer, setAnswer] = useState('')
+  
+    const [loader, setLoader] = useState(false)
+    const [fieldStatus, setFieldStatus] = useState(false)
+  
+    const registerAdmin = () => {
+      setFieldStatus(true)
+      if (
+        username === "" ||
+        question === "Select Security Question" ||
+        answer === "" ||
+        password === "" ||
+        confirmPassword === "" ||
+        phone === ""
+      ) {
+        toast.warn("Please fill all fields");
       } else {
-        checkRegister();
+        if (password.length < 6) {
+          toast.warn("Password should be atleast 6 characters");
+        } else if (confirmPassword !== password) {
+          toast.warn("Password should match");
+        } else {
+          checkRegister();
+        }
       }
     }
-  }
-
-  const checkRegister = () => {
-    setLoader(true)
-    var formdata = new FormData();
-    formdata.append("username", username);
-    formdata.append("phone_number", phone);
-    formdata.append("question", question);
-    formdata.append("answer", answer);
-    formdata.append("password", password);
-    formdata.append("password_confirmation", confirmPassword);
-
-    var requestOptions = {
-      method: 'POST',
-      body: formdata,
-      redirect: 'follow'
-    };
-
-    fetch(`${baseUrl}register`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-        if (result.response === "200") {
+  
+    const checkRegister = () => {
+      setLoader(true)
+      var formdata = new FormData();
+      formdata.append("username", username);
+      formdata.append("phone_number", phone);
+      formdata.append("question", question);
+      formdata.append("answer", answer);
+      formdata.append("password", password);
+      formdata.append("password_confirmation", confirmPassword);
+  
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+      };
+  
+      fetch(`${baseUrl}register`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          if (result.response === "200") {
+            setLoader(false)
+            setFieldStatus(false)
+            toast.success("Registered Successfully")
+            setInterval(() => {
+              window.location.reload(true)
+            }, 2000)
+          }
+          else if (result.status === "401") {
+            setLoader(false)
+            setFieldStatus(false)
+            toast.warn(result.message)
+          }
+  
+        })
+        .catch(error => {
           setLoader(false)
           setFieldStatus(false)
-          toast.success("Registered Successfully")
-          setInterval(() => {
-            window.location.reload(true)
-          }, 2000)
-        }
-        else if (result.status === "401") {
-          setLoader(false)
-          setFieldStatus(false)
-          toast.warn(result.message)
-        }
-
-      })
-      .catch(error => {
-        setLoader(false)
-        setFieldStatus(false)
-        toast.warn('Error while submitting details')
-        console.log('error', error)
-      });
-  }
-
-
+          toast.warn('Error while submitting details')
+          console.log('error', error)
+        });
+    }
+  
   return (
     <div>
-
-      <div className='content-wrapper'>
+         <div className='content-wrapper'>
         <Modal open={shouldShow}>
 
           <div className='card-body'>
@@ -169,9 +163,8 @@ const AddUser = ({ users, closeModal, shouldShow }) => {
         </Modal>
       </div>
 
-
     </div>
   )
 }
 
-export default AddUser
+export default EditCategory
