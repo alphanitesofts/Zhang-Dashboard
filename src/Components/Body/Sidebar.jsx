@@ -68,6 +68,50 @@ const Sidebar = () => {
 
                                     </ul>
                                 </li>
+
+                                <li className="nav-item menu treeview">
+                                    <a href="#" className="nav-link">
+                                        <i className="nav-icon fa-solid fa-truck mr-2" />
+                                        <p>
+                                            Vendors
+                                            <i className="right fas fa-angle-left" />
+                                        </p>
+                                    </a>
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/AllVendors" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>All Vendors</p>
+                                            </Link>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li className="nav-item menu treeview">
+                                    <a href="#" className="nav-link">
+                                        <i className="nav-icon fa-solid fa-box-open mr-2" />
+                                        <p>
+                                            Products
+                                            <i className="right fas fa-angle-left" />
+                                        </p>
+                                    </a>
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/AddProducts" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>Add Products</p>
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/AllProducts" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>All Products</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+
+                                </li>
                             </ul>
                         </nav>
                     </div>

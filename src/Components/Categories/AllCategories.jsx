@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react'
 import colorScheme from '../sourceFiles/Styles'
 import AddUser from '../Users/AddUser'
 import { toast } from 'react-toastify';
+import EditCategory from './EditCategory';
+import AddCategory from './AddCategory';
 
 const AllCategories = () => {
 
 
   const [category, setCategory] = useState([]);
   const [totalCategory, setTotalCategory] = useState("")
-
+  const [userId, setUserId] = useState('')
   // filters
   const [categoryId, setCategoryId] = useState('')
   const [categoryDate, setCategoryDate] = useState('');
@@ -16,11 +18,11 @@ const AllCategories = () => {
 
   const [loader, setLoader] = useState(false)
   const [shouldShow, setShouldShow] = useState(false)
+  const [editModal, setEditModal] = useState(false)
 
   useEffect(() => {
     fetchUsers();
   }, [])
-
 
   const fetchUsers = () => {
     setLoader(true)
@@ -35,6 +37,7 @@ const AllCategories = () => {
         console.log(result)
         setLoader(false)
         if (result.status === "200") {
+
           setCategory(result.Categorys)
           setTotalCategory(result.total_categorys)
         }
@@ -92,9 +95,17 @@ const AllCategories = () => {
         <td>{items.id}</td>
         <td>{items.title}</td>
         <td>{items.types}</td>
+
+        {/* <td>
+        {items.types.map((type) => (
+          <span>{type}</span>
+        ))}
+      </td> */}
+
         <td>{items.description}</td>
         <td>{items.Idate}</td>
-        <td><button className='btn btn-outline-danger' onClick={() => deleteUser(items.id)}><i className='fa-solid fa-pen' /></button></td>
+        <td><button className='btn btn-outline-danger' onClick={() => openEditModal(items)}><i className='fa-solid fa-pen' /></button></td>
+
       </tr>
     )
   }
@@ -103,32 +114,14 @@ const AllCategories = () => {
     setShouldShow((prev) => !prev)
   }
 
-  const deleteUser = (id) => {
-    var requestOptions = {
-      method: 'POST',
-      redirect: 'follow'
-    };
-
-    fetch(`${process.env.REACT_APP_BASE_URL}deleteuserwithid/${id}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-        if (result.status === "200") {
-          toast.success(result.message)
-          setInterval(() => {
-            window.location.reload()
-          }, 1500);
-        }
-        else if (result.status === "401") {
-          console.log("error ")
-        }
-      })
-      .catch(error => {
-        console.log('error', error)
-      });
+  function openEditModal(id) {
+    setUserId(id)
+    setEditModal((prev) => !prev)
   }
+
   return (
     <div>
+
       <div>
         <div className="scroll-view-two scrollbar-secondary-two">
           <div className="content-wrapper p-3">
@@ -150,7 +143,7 @@ const AllCategories = () => {
 
                     <div className="card" style={{ color: colorScheme.card_txt_color, boxShadow: colorScheme.box_shadow_one, }}>
                       <div className="card-header">
-                        <h5>Total Users {totalCategory}</h5>
+                        <h5>Total Categories {totalCategory}</h5>
                         <button className="btn btn-outline-info btn-sm" onClick={() => { window.location.reload() }}>Reset Filters</button>
                         <button className="btn btn-outline-info btn-sm float-end" onClick={oncloseModal}>Add Category &nbsp;<i className='fa-solid fa-plus' /></button>
                         <div className="row p-2">
@@ -247,10 +240,19 @@ const AllCategories = () => {
 
           {
             category ?
-              < AddUser
-                category={category}
+              < AddCategory
                 closeModal={oncloseModal}
                 shouldShow={shouldShow}
+              /> : null
+          }
+
+          {
+            category ?
+              < EditCategory
+                category={category}
+                openEditModal={openEditModal}
+                editModal={editModal}
+                userId={userId}
               /> : null
           }
 

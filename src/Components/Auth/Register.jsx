@@ -69,7 +69,7 @@ const Register = () => {
         else if (result.status === "401") {
           setLoader(false)
           setFieldStatus(false)
-          toast.warn(result.message)
+          toast.warn(result.data)
         }
 
       })

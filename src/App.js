@@ -15,6 +15,9 @@ import ForgotPassword from "./Components/Auth/ForgotPassword";
 import AllUsers from "./Components/Users/AllUsers";
 import Homepage from "./Components/Main/Homepage";
 import AllCategories from "./Components/Categories/AllCategories";
+import AllVendors from "./Components/Vendors/AllVendors";
+import AddProduct from "./Components/Products/AddProduct";
+import AllProducts from "./Components/Products/AllProducts";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -50,9 +53,14 @@ function App() {
           <Navbar />
           <Sidebar />
           <Routes>
+            
             <Route path="/" element={<Homepage />} />
             <Route path="/AllUsers" element={<AllUsers />} />
             <Route path="/AllCategories" element={<AllCategories />} />
+            <Route path="/AllVendors" element={<AllVendors />} />
+            <Route path="/AddProducts" element={<AddProduct />} />
+            <Route path="/AllProducts" element={<AllProducts />} />
+            
           </Routes>
           <Footer />
         </Router>
