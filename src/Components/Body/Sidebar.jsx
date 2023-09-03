@@ -110,8 +110,27 @@ const Sidebar = () => {
                                             </Link>
                                         </li>
                                     </ul>
-
                                 </li>
+
+                                <li className="nav-item menu treeview">
+                                    <a href="#" className="nav-link">
+                                        <i className="nav-icon fa-solid fa-box-open mr-2" />
+                                        <p>
+                                            Promotions
+                                            <i className="right fas fa-angle-left" />
+                                        </p>
+                                    </a>
+
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/GetAllPromotion" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>View Promotions</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+
                             </ul>
                         </nav>
                     </div>

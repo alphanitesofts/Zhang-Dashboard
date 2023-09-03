@@ -18,6 +18,7 @@ import AllCategories from "./Components/Categories/AllCategories";
 import AllVendors from "./Components/Vendors/AllVendors";
 import AddProduct from "./Components/Products/AddProduct";
 import AllProducts from "./Components/Products/AllProducts";
+import GetAllPromotion from "./Components/Promotion/GetAllPromotion";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -60,6 +61,7 @@ function App() {
             <Route path="/AllVendors" element={<AllVendors />} />
             <Route path="/AddProducts" element={<AddProduct />} />
             <Route path="/AllProducts" element={<AllProducts />} />
+            <Route path="/GetAllPromotion" element={<GetAllPromotion />} />
             
           </Routes>
           <Footer />
