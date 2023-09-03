@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import colorScheme from '../sourceFiles/Styles'
 import AddUser from '../Users/AddUser'
 import { toast } from 'react-toastify';
+import AddPromotion from './AddPromotion';
 
 const GetAllPromotion = () => {
 
@@ -52,7 +53,6 @@ const GetAllPromotion = () => {
             return <DataRender />
         }
     }
-
 
     const DataRender = () => {
         return (
@@ -113,30 +113,18 @@ const GetAllPromotion = () => {
             <tr>
                 <td>{index + 1}</td>
                 <td>{items.id}</td>
-                <td>{items.title}</td>
-                <td>{items.types}</td>
-
-                {/* <td>
-        {items.types.map((type) => (
-          <span>{type}</span>
-        ))}
-      </td> */}
-
-                <td>{items.description}</td>
+                <td>{items.code}</td>
+                <td>{items.discount}</td>
+                <td>{items.discount_type}</td>
+                <td>{items.expiry_date}</td>
                 <td>{items.Idate}</td>
-                <td><button className='btn btn-outline-danger' onClick={() => openEditModal(items)}><i className='fa-solid fa-pen' /></button></td>
-
+                {/* <td><button className='btn btn-outline-danger' onClick={() => openEditModal(items)}><i className='fa-solid fa-pen' /></button></td> */}
             </tr>
         )
     }
 
     function oncloseModal() {
         setShouldShow((prev) => !prev)
-    }
-
-    function openEditModal(id) {
-        setUserId(id)
-        setEditModal((prev) => !prev)
     }
 
     return (
@@ -150,7 +138,7 @@ const GetAllPromotion = () => {
                                 <div className="row mb-2">
                                     <div className="col-sm-6">
                                         <h1>
-                                            Category Sheet
+                                            Promotions
                                         </h1>
                                     </div>
                                 </div>
@@ -163,9 +151,9 @@ const GetAllPromotion = () => {
 
                                         <div className="card" style={{ color: colorScheme.card_txt_color, boxShadow: colorScheme.box_shadow_one, }}>
                                             <div className="card-header">
-                                                <h5>Total Categories</h5>
+                                                <h5>Promotions Sheet</h5>
                                                 <button className="btn btn-outline-info btn-sm" onClick={() => { window.location.reload() }}>Reset Filters</button>
-                                                <button className="btn btn-outline-info btn-sm float-end" onClick={oncloseModal}>Add Category &nbsp;<i className='fa-solid fa-plus' /></button>
+                                                <button className="btn btn-outline-info btn-sm float-end" onClick={oncloseModal}>Add Promotions &nbsp;<i className='fa-solid fa-plus' /></button>
                                                 <div className="row p-2">
 
                                                     <div className="col-sm-3 col-lg-3">
@@ -247,12 +235,11 @@ const GetAllPromotion = () => {
                                                                     <tr>
                                                                         <th>#</th>
                                                                         <th>ID</th>
-                                                                        <th>Title</th>
-                                                                        <th>Types</th>
-                                                                        <th>Description</th>
-                                                                        <th>Date</th>
-                                                                        <th>Action</th>
-
+                                                                        <th>Promo Code</th>
+                                                                        <th>Discount</th>
+                                                                        <th>Discount Type</th>
+                                                                        <th>Expiry Date</th>
+                                                                        <th>Posting Date</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody className='text-center'>
@@ -273,16 +260,15 @@ const GetAllPromotion = () => {
                     </div>
 
 
-                    {/* 
-          {
-            promotions ?
-              < EditCategory
-                promotions={promotions}
-                openEditModal={openEditModal}
-                editModal={editModal}
-                promoID={promoID}
-              /> : null
-          } */}
+
+                    {
+                        promotions ?
+                            <AddPromotion
+                                promotions={promotions}
+                                oncloseModal={oncloseModal}
+                                shouldShow={shouldShow}
+                            /> : null
+                    }
 
                 </div>
             </div>

@@ -114,7 +114,7 @@ const Sidebar = () => {
 
                                 <li className="nav-item menu treeview">
                                     <a href="#" className="nav-link">
-                                        <i className="nav-icon fa-solid fa-box-open mr-2" />
+                                        <i className="nav-icon fa-solid fa-bullhorn mr-2" />
                                         <p>
                                             Promotions
                                             <i className="right fas fa-angle-left" />
