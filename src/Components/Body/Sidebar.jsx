@@ -84,7 +84,6 @@ const Sidebar = () => {
                                                 <p>All Vendors</p>
                                             </Link>
                                         </li>
-
                                     </ul>
                                 </li>
 
@@ -126,6 +125,44 @@ const Sidebar = () => {
                                             <Link to="/GetAllPromotion" className="nav-link ">
                                                 <i className="far fa-circle nav-icon" />
                                                 <p>View Promotions</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li className="nav-item menu treeview">
+                                    <a href="#" className="nav-link">
+                                        <i className="nav-icon fa-solid fa-face-smile mr-2" />
+                                        <p>
+                                            Reviews
+                                            <i className="right fas fa-angle-left" />
+                                        </p>
+                                    </a>
+
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/GetAllTickets" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>Customer Reviews</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li className="nav-item menu treeview">
+                                    <a href="#" className="nav-link">
+                                        <i className="nav-icon fa-solid fa-circle-info mr-2" />
+                                        <p>
+                                            Help Center
+                                            <i className="right fas fa-angle-left" />
+                                        </p>
+                                    </a>
+
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/GetAllTickets" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>All Tickets</p>
                                             </Link>
                                         </li>
                                     </ul>

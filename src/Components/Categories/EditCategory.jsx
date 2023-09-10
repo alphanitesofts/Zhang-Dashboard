@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,13 +8,20 @@ import { Modal } from 'pretty-modal';
 toast.configure();
 const EditCategory = ({ userId, category, openEditModal, editModal }) => {
 
+    const [getData, setData] = useState([])
+
     const [title, setTitle] = useState(category.title)
     const [description, setDescription] = useState("")
     const [types, setTypes] = useState("")
-
+    
     const [loader, setLoader] = useState(false)
     const [fieldStatus, setFieldStatus] = useState(false)
 
+    // alert(userId) 
+
+    useEffect(() => {
+        getCategorywithId()
+    }, [userId])
 
     const registerAdmin = () => {
         setFieldStatus(true)
@@ -27,7 +34,6 @@ const EditCategory = ({ userId, category, openEditModal, editModal }) => {
         } else {
             postCategory();
         }
-
     }
 
     const postCategory = () => {
@@ -66,6 +72,29 @@ const EditCategory = ({ userId, category, openEditModal, editModal }) => {
                 setLoader(false)
                 setFieldStatus(false)
                 toast.warn('Error while submitting details')
+                console.log('error', error)
+            });
+    }
+
+
+    const getCategorywithId = (userId) => {
+        var requestOptions = {
+            method: 'POST',
+            redirect: 'follow'
+        };
+
+        fetch(`${baseUrl}fetchcategorywithid/${userId}`, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                if (result.status === "200") {
+                    setData(result.data)
+                }
+                else {
+                    console.log("error in api fetchcategorywithid")
+                }
+            })
+            .catch(error => {
                 console.log('error', error)
             });
     }

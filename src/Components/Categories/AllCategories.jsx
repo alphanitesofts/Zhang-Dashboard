@@ -95,16 +95,9 @@ const AllCategories = () => {
         <td>{items.id}</td>
         <td>{items.title}</td>
         <td>{items.types}</td>
-
-        {/* <td>
-        {items.types.map((type) => (
-          <span>{type}</span>
-        ))}
-      </td> */}
-
         <td>{items.description}</td>
         <td>{items.Idate}</td>
-        <td><button className='btn btn-outline-danger' onClick={() => openEditModal(items)}><i className='fa-solid fa-pen' /></button></td>
+        <td><button className='btn btn-outline-danger' onClick={() => openEditModal(items.id)}><i className='fa-solid fa-pen' /></button></td>
 
       </tr>
     )
