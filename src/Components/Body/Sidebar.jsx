@@ -109,6 +109,20 @@ const Sidebar = () => {
                                             </Link>
                                         </li>
                                     </ul>
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/PostFeaturedProducts" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>Add Featured</p>
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/GetFeatureProducts" className="nav-link ">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>Get Featured</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 </li>
 
                                 <li className="nav-item menu treeview">

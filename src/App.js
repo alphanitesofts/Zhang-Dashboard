@@ -21,6 +21,8 @@ import AllProducts from "./Components/Products/AllProducts";
 import GetAllPromotion from "./Components/Promotion/GetAllPromotion";
 import GetAllTickets from "./Components/TIckets/GetAllTickets";
 import GetAllReviews from "./Components/Reviews/GetAllReviews";
+import GetFeaturedProducts from "./Components/Products/GetFeaturedProducts";
+import PostFeaturedProducts from "./Components/Products/PostFeaturedProducts";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -65,6 +67,8 @@ function App() {
             <Route path="/GetAllPromotion" element={<GetAllPromotion />} />
             <Route path="/GetAllTickets" element={<GetAllTickets />} />
             <Route path="/GetAllReviews" element={<GetAllReviews />} />
+            <Route path="/GetFeaturedProducts" element={<GetFeaturedProducts />} />
+            <Route path="/PostFeaturedProducts" element={<PostFeaturedProducts />} />
           </Routes>
           <Footer />
         </Router>
